@@ -55,6 +55,7 @@ jobs:
       - deploy:
           # Push application container to dockerhub
           command: |
+            echo "${DOCKER_USER} ${DOCKER_PASS}" && \
             if [ "${CIRCLE_BRANCH}" == "main" ]; then
                 docker login -u ${DOCKER_USER} -p ${DOCKER_PASS};
                 echo ${DOCKER_USER}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_TAG};
